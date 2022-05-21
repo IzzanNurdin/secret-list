@@ -1,0 +1,21 @@
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.loading-wrapper svg {
+    width: 64px;
+    height: 64px;
+    animation: rotate 2s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

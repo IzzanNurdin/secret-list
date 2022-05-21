@@ -1,0 +1,15 @@
+.welcome-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0px;
+    gap: 8px;
+}
+
+h3 {
+    margin: 0;
+}
+
+p label {
+    font-weight: bold;
+    color: var(--orange);
+}
