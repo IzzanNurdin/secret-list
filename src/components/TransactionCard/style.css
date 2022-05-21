@@ -1,0 +1,58 @@
+.card {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.card.success {
+    border-left: 4px solid var(--green);
+}
+
+.card.pending {
+    border-left: 4px solid var(--orange);
+}
+
+.bank-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    gap: 8px;
+}
+
+.transaction-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.amount-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-badge {
+    display: flex;
+    height: 30px;
+    border-radius: 8px;
+    padding: 2px 32px;
+    align-items: center;
+}
+
+.status-badge.success {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.status-badge.pending {
+    background-color: var(--white);
+    border: 2px solid var(--orange);
+}

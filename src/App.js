@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import AppTitle from "components/AppTitle";
+import TransactionCard from "components/TransactionCard/TransactionCard";
+import React from "react";
+import { fetchData } from "utils/api";
+import "./App.css";
 
 function App() {
+  const [data, setData] = React.useState({});
+  const [index, setIndex] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    fetchData("https://recruitment-test.flip.id/frontend-test")
+      .then((resp) => {
+        setData(resp.data);
+        setIndex(Object.keys(resp.data));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppTitle title="Detail Transaksi" />
+      <div className="list-wrapper">
+        {index.map((item) => (
+          <TransactionCard key={item} data={data[item]} />
+        ))}
+      </div>
     </div>
   );
 }
