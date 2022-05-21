@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import AppDetail from "AppDetail";
 import reportWebVitals from "./reportWebVitals";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 
@@ -11,6 +12,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App />} />
+        <Route exact path="/transaction-detail" element={<AppDetail />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

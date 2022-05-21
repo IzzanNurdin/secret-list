@@ -34,7 +34,8 @@ function App() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.dir(err);
+        setError(err.message);
         setLoading(false);
       });
     document.title = "Flip - Daftar Transaksi";
@@ -44,19 +45,27 @@ function App() {
     <div className="App">
       <AppTitle title="Daftar Transaksi" />
       <div className="list-wrapper">
-        <Welcome amount={totalTransaction} />
-        <Search
-          query={query}
-          setQuery={setQuery}
-          sort={sort}
-          setSortBy={setSortBy}
-        />
-        {loading ? (
-          <Loading />
+        {error ? (
+          <div className="error">
+            <h4>{error}</h4>
+          </div>
         ) : (
-          findNameorBank(filteredData, query, sort).map((item) => (
-            <TransactionCard key={item.id} data={item} />
-          ))
+          <>
+            <Welcome amount={totalTransaction} />
+            <Search
+              query={query}
+              setQuery={setQuery}
+              sort={sort}
+              setSortBy={setSortBy}
+            />
+            {loading ? (
+              <Loading />
+            ) : (
+              findNameorBank(filteredData, query, sort).map((item) => (
+                <TransactionCard key={item.id} data={item} />
+              ))
+            )}
+          </>
         )}
       </div>
     </div>

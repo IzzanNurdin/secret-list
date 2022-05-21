@@ -11,3 +11,11 @@
   gap: 12px;
   margin: 0 auto;
 }
+
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+  color: red;
+}

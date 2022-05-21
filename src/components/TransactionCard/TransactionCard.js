@@ -1,13 +1,16 @@
 import "./style.css";
 import { BsDot, BsArrowRight } from "react-icons/bs";
 import { currencyFormat, readableDate } from "utils/helpers";
+import { useNavigate } from "react-router-dom";
+import StatusBadge from "components/StatusBadge";
 
 const TransactionCard = ({ data }) => {
+  const navigate = useNavigate();
   const date = new Date(data.created_at);
-  console.log(date);
   return (
     <button
       className={data.status === "SUCCESS" ? "card success" : "card pending"}
+      onClick={() => navigate("/transaction-detail", { state: data })}
     >
       <div className="transaction-meta">
         <div className="bank-list">
@@ -19,15 +22,7 @@ const TransactionCard = ({ data }) => {
           {currencyFormat(data.amount)} <BsDot /> {readableDate(date)}
         </div>
       </div>
-      <div
-        className={
-          data.status === "SUCCESS"
-            ? "status-badge success"
-            : "status-badge pending"
-        }
-      >
-        {data.status === "SUCCESS" ? "Berhasil" : "Pengecekan"}
-      </div>
+      <StatusBadge status={data.status} />
     </button>
   );
 };

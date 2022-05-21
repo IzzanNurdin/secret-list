@@ -1,0 +1,17 @@
+.status-badge {
+    display: flex;
+    height: 30px;
+    border-radius: 8px;
+    padding: 2px 32px;
+    align-items: center;
+}
+
+.status-badge.success {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.status-badge.pending {
+    background-color: var(--white);
+    border: 2px solid var(--orange);
+}

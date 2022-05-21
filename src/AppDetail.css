@@ -1,0 +1,63 @@
+.page-wrapper {
+    display: block;
+    width: 860px;
+    margin: 0 auto;
+}
+
+.transaction-id {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    background-color: var(--white);
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.transaction-card {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--white);
+    border-radius: 8px;
+}
+
+.transaction-card svg {
+    width: 64px;
+    height: 64px;
+    fill: var(--orange);
+}
+
+.transaction-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.transaction-detail label {
+    font-weight: bold;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.back-button {
+    all: unset;
+    cursor: pointer;
+    margin-top: 24px;
+    padding: 12px 24px;
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    color: var(--orange);
+    background-color: transparent;
+}
+
+.back-button:hover {
+    background-color: var(--orange);
+    color: var(--white);
+}
