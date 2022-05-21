@@ -31,8 +31,14 @@ input {
     background-color: var(--white);
 }
 
+input::placeholder {
+    font-weight: 600;
+    color: var(--dark-grey);
+}
+
 select {
     all: unset;
+    cursor: pointer;
     appearance: none;
     font-weight: bold;
     width: 20%;

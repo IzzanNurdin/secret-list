@@ -4,6 +4,7 @@ import { currencyFormat, readableDate } from "utils/helpers";
 
 const TransactionCard = ({ data }) => {
   const date = new Date(data.created_at);
+  console.log(date);
   return (
     <button
       className={data.status === "SUCCESS" ? "card success" : "card pending"}

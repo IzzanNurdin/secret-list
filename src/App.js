@@ -1,7 +1,7 @@
 import AppTitle from "components/AppTitle";
 import Search from "components/Search";
 import TransactionCard from "components/TransactionCard/TransactionCard";
-import { calculateTotalTransaction } from "utils/helpers";
+import { calculateTotalTransaction, findNameorBank } from "utils/helpers";
 import Welcome from "components/Welcome";
 import Loading from "components/Loading";
 import React from "react";
@@ -9,15 +9,20 @@ import { fetchData } from "utils/api";
 import "./App.css";
 
 function App() {
-  const [data, setData] = React.useState({});
-  const [index, setIndex] = React.useState([]);
-  const [totalTransaction, setTotalTransaction] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
 
+  const [query, setQuery] = React.useState("");
+  const [sort, setSortBy] = React.useState("asc-name");
+  const [filteredData, setFilteredData] = React.useState([]);
+  const [totalTransaction, setTotalTransaction] = React.useState("");
+
   const handleResponse = React.useCallback((data, index) => {
-    setData(data);
-    setIndex(index);
+    setFilteredData(
+      index.map((item) => {
+        return data[item];
+      })
+    );
     setTotalTransaction(calculateTotalTransaction(data, index));
   }, []);
 
@@ -32,18 +37,26 @@ function App() {
         console.log(err);
         setLoading(false);
       });
-  }, []);
+    document.title = "Flip - Daftar Transaksi";
+  }, [handleResponse]);
 
   return (
     <div className="App">
       <AppTitle title="Daftar Transaksi" />
       <div className="list-wrapper">
         <Welcome amount={totalTransaction} />
-        <Search />
+        <Search
+          query={query}
+          setQuery={setQuery}
+          sort={sort}
+          setSortBy={setSortBy}
+        />
         {loading ? (
           <Loading />
         ) : (
-          index.map((item) => <TransactionCard key={item} data={data[item]} />)
+          findNameorBank(filteredData, query, sort).map((item) => (
+            <TransactionCard key={item.id} data={item} />
+          ))
         )}
       </div>
     </div>

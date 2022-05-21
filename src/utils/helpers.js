@@ -14,8 +14,8 @@ const COMPLETE_MONTH = [
 ];
 
 export function readableDate(date) {
-  return `${date.getDay()} ${
-    COMPLETE_MONTH[date.getMonth() - 1]
+  return `${date.getDate()} ${
+    COMPLETE_MONTH[date.getMonth()]
   } ${date.getFullYear()}`;
 }
 
@@ -32,7 +32,35 @@ export function calculateTotalTransaction(data, index) {
   let result = 0;
   index.map((item) => {
     result = result + data[item].amount;
+    return null;
   });
 
   return currencyFormat(result);
+}
+
+export function findNameorBank(data, query, sort) {
+  const filtered = data.filter(
+    (item) =>
+      item.beneficiary_name.toLowerCase().includes(query.toLowerCase()) ||
+      item.beneficiary_bank.toLowerCase().includes(query.toLowerCase()) ||
+      item.sender_bank.toLowerCase().includes(query.toLowerCase())
+  );
+
+  if (sort === "asc-name") {
+    filtered.sort((a, b) => {
+      return a.beneficiary_name
+        .toLowerCase()
+        .localeCompare(b.beneficiary_name.toLowerCase());
+    });
+  }
+
+  if (sort === "desc-name") {
+    filtered.sort((a, b) => {
+      return b.beneficiary_name
+        .toLowerCase()
+        .localeCompare(a.beneficiary_name.toLowerCase());
+    });
+  }
+
+  return filtered;
 }

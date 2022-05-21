@@ -2,9 +2,7 @@ import React from "react";
 import "./style.css";
 import { IoSearch } from "react-icons/io5";
 
-const Search = () => {
-  const [query, setQuery] = React.useState("");
-  const [filter, setFilterBy] = React.useState("");
+const Search = ({ query, setQuery, sort, setSortBy }) => {
   return (
     <form className="form-wrapper">
       <div className="input-wrapper">
@@ -15,7 +13,7 @@ const Search = () => {
         />
         <IoSearch />
       </div>
-      <select value={filter} onChange={(e) => setFilterBy(e.target.value)}>
+      <select value={sort} onChange={(e) => setSortBy(e.target.value)}>
         <option>Urutkan</option>
         <option value="asc-name">Nama A-Z</option>
         <option value="desc-name">Nama Z-A</option>
