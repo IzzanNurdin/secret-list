@@ -18,8 +18,8 @@ const Search = ({ query, setQuery, sort, setSortBy }) => {
         <option value="asc-name">Nama A-Z</option>
         <option value="desc-name">Nama Z-A</option>
         {/* Optional */}
-        {/* <option value="asc-date">Tanggal terbaru</option>
-        <option value="desc-date">Tanggal terlama</option> */}
+        <option value="asc-date">Tanggal terbaru</option>
+        <option value="desc-date">Tanggal terlama</option>
       </select>
     </form>
   );

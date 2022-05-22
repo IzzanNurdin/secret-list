@@ -62,5 +62,21 @@ export function findNameorBank(data, query, sort) {
     });
   }
 
+  if (sort === "asc-date") {
+    filtered.sort((a, b) => {
+      return (
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+    });
+  }
+
+  if (sort === "desc-date") {
+    filtered.sort((a, b) => {
+      return (
+        new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+      );
+    });
+  }
+
   return filtered;
 }
