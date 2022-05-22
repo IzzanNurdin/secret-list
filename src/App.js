@@ -51,7 +51,7 @@ function App() {
           </div>
         ) : (
           <>
-            <Welcome amount={totalTransaction} />
+            <Welcome loading={loading} amount={totalTransaction} />
             <Search
               query={query}
               setQuery={setQuery}
@@ -59,7 +59,7 @@ function App() {
               setSortBy={setSortBy}
             />
             {loading ? (
-              <Loading />
+              <Loading width={64} height={64} />
             ) : (
               findNameorBank(filteredData, query, sort).map((item) => (
                 <TransactionCard key={item.id} data={item} />
